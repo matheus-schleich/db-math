@@ -28,7 +28,7 @@ jobs:
     - name: Executar query no MySQL
       run: |
         mysql -h ${{ github.event.inputs.name }} \
-              -u${{ secrets.USER }} \
-              -p${{ secrets.PASS }} \
+              -u$ gestor\
+              -p$'Abcd1234' \
               --ssl-mode=REQUIRED \
               db-math < ${{ github.event.inputs.query }}
