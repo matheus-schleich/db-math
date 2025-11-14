@@ -31,4 +31,4 @@ jobs:
               -u${{ secrets.USER }} \
               -p${{ secrets.PASS }} \
               --ssl-mode=REQUIRED \
-              < ${{ github.event.inputs.query }}
+              db-math < ${{ github.event.inputs.query }}
