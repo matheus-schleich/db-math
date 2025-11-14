@@ -28,7 +28,7 @@ jobs:
     - name: Executar query no MySQL
       run: |
         mysql -h ${{ github.event.inputs.name }} \
-              -ugestor@db-math \
-              -pAbc1234 \
+              -u  ${{ secrets.USER }} \
+              -p  ${{ secrets.PASS }} \
               --ssl-mode=REQUIRED \
               db-math < ${{ github.event.inputs.query }}
