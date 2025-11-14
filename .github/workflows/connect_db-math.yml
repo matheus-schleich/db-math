@@ -18,7 +18,6 @@ on:
 jobs:
   greet:
     runs-on: ubuntu-latest
-    environment: database-test
 
     steps:
     - uses: actions/checkout@v4
@@ -29,7 +28,7 @@ jobs:
     - name: Executar query no MySQL
       run: |
         mysql -h ${{ github.event.inputs.name }} \
-              -u${{ secrets.USER }} \
-              -p${{ secrets.PASS }} \
+              -ugestor@db-math \
+              -pAbc1234 \
               --ssl-mode=REQUIRED \
               db-math < ${{ github.event.inputs.query }}
