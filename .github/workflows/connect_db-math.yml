@@ -1,26 +1,26 @@
-name: Teste MySQL na db-math
+name: Teste azure mysql server
 
 on:
   workflow_dispatch:
     inputs:
       name:
-        description: 'Servidor MySQL (host)'
+        description: 'Servidor a testar'
         default: 'db-math.mysql.database.azure.com'
         required: true
         type: string
+
       query:
-        description: 'Arquivo SQL a executar'
+        description: 'Query a testar'
         default: 'create.sql'
         required: true
         type: string
 
 jobs:
-  test-mysql:
+  greet:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout do repositório
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
     - name: Verificar arquivos
       run: ls -l
@@ -28,7 +28,7 @@ jobs:
     - name: Executar query no MySQL
       run: |
         mysql -h ${{ github.event.inputs.name }} \
-              -u$ gestor\
-              -p$'Abcd1234' \
+              -ugestor@db-math \
+              -pAbcd123! \
               --ssl-mode=REQUIRED \
               db-math < ${{ github.event.inputs.query }}
